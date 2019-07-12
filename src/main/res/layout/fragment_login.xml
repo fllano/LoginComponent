@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+                name="viewModel"
+                type="com.santander.login.view.LoginViewModel" />
+    </data>
+
+    <!-- //TODO to constraintlayout -->
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="16dp"
+            android:paddingEnd="15dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="24dp"
+            android:background="@color/white"
+            android:gravity="center_horizontal">
+
+        <!-- logo -->
+        <ImageView
+                android:id="@+id/logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:src="@drawable/fill_1_copy_3"/>
+
+        <!-- line -->
+        <LinearLayout
+                android:id="@+id/layoutLine"
+                android:layout_width="215dp"
+                android:layout_height="1dp"
+                android:orientation="horizontal"
+                android:background="@color/santander_red"
+                android:layout_marginTop="16dp"/>
+
+        <!-- greetings -->
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:textColor="@color/santander_red"
+                android:gravity="center_horizontal"
+                android:text="@{viewModel.greetings}"
+                android:layout_marginTop="7dp"
+                android:fontFamily="@font/santandertext_light"/>
+
+        <!-- space -->
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3"
+                android:orientation="horizontal"/>
+
+        <!-- user -->
+        <!--
+        <com.globile.santander.mobisec.securekeyboard.SanEditTex
+            android:id="@+id/userField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@={viewModel.user}"
+            android:fontFamily="@font/santandertext_regular"
+            android:gravity="center_vertical"
+            android:elevation="3dp"
+            android:textColor="@color/santanderGray"
+            android:textSize="17sp"
+            android:inputType="text"
+            android:maxLines="1"
+            android:maxLength="50"
+            android:padding="10dp"
+            android:background="@color/santanderBackgroundGray"
+            android:textColorHint="@color/santanderWarmGray"
+            android:hint="@string/login_documentNumber"/>
+            -->
+
+        <!-- user -->
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="4dp"
+                app:errorEnabled="true"
+                app:errorText="@{viewModel.userError}">
+            <!--
+            android:layout_height="60dp"
+            android:background="@drawable/edit_background"
+            android:background="@color/sky_30"
+            app:error="@{viewModel.loginError}"
+            -->
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/userField"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="text"
+
+
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
+
+                    android:maxLines="1"
+                    android:maxLength="50"
+                    android:hint="@string/login_documentNumber"
+                    android:text="@={viewModel.user}"
+                    style="@style/SanTextInputEditTextStyle"/>
+            <!-- android:translationY="6dp" -->
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- space -->
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"/>
+
+        <!-- pass -->
+        <!--
+        <com.globile.santander.mobisec.securekeyboard.SanEditText
+            android:id="@+id/test"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/login_password"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:fontFamily="@font/santandertext_regular"
+            android:elevation="3dp"
+            android:textSize="17sp"
+            android:maxLines="1"
+            android:maxLength="6"
+            android:textColorHint="@color/santanderWarmGray"
+            android:textColor="@color/santanderGray"
+            android:text="@={viewModel.pass}"
+            android:inputType="numberPassword"
+            android:background="@color/santanderBackgroundGray"/>
+            -->
+
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp">
+            <!-- android:layout_height="60dp" -->
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    app:passwordToggleEnabled="true"
+                    android:paddingTop="4dp"
+                    app:errorText="@{viewModel.passError}">
+                <!--
+                android:layout_height="60dp"
+                android:background="@drawable/edit_background"
+                -->
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/test"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberPassword"
+                        android:maxLines="1"
+                        android:maxLength="6"
+                        android:hint="@string/login_password"
+                        android:text="@={viewModel.pass}"
+                        style="@style/SanTextInputEditTextStyle"
+                        android:paddingEnd="15dp"/>
+                <!-- android:layout_height="match_parent" -->
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            <!-- delete -->
+            <!--
+            <Button
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:background="@drawable/icon_remove"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="63dp"
+                android:layout_marginTop="32dp"
+                />
+                -->
+
+            <!-- separator -->
+            <!-- <LinearLayout
+                    android:layout_width="1dp"
+                    android:layout_height="28dp"
+                    android:background="@color/medium_sky"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="48dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="10dp"/> -->
+
+        </RelativeLayout>
+
+
+
+        <!-- space -->
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="8"
+                android:orientation="horizontal"/>
+
+        <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="@{viewModel::doLogin}"
+                android:background="@{viewModel.validateLogin(viewModel.user, viewModel.pass) ? @drawable/rounded_button_red : @drawable/rounded_button_grey}"
+                android:fontFamily="@font/santandertext_regular"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:text="@string/login_loginbutton"
+                android:textAllCaps="false"
+                android:enabled="@{viewModel.validateLogin(viewModel.user, viewModel.pass) ? true : false}"
+                android:layout_marginEnd="1dp"
+                android:layout_marginStart="1dp"/>
+
+        <Button
+                android:id="@+id/forgotButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:textAllCaps="false"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/santandertext_regular"
+                android:textSize="14sp"
+                android:textColor="@color/santanderWarmGray"
+                android:text="@string/login_forgot"
+                android:layout_marginEnd="1dp"
+                android:layout_marginStart="1dp"
+
+                android:visibility="gone"/>
+
+        <!-- edittext from architecture -->
+        <!--
+        <com.santander.globile.uicomponents.textinputlayout.GlobileTextInputLayout
+            android:id="@+id/test2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:helpText="Error number 1"
+            app:rightIconBackground="@drawable/close"
+            app:endIconBackground="@drawable/drawer_button"
+            app:endIconBackgroundTint="@color/black"
+            app:placeholder="@string/login_password"
+            android:inputType="numberPassword"
+            android:maxLines="1"
+            android:maxLength="6"
+            android:hint="@string/login_password"
+            android:text="@={viewModel.pass}"
+            style="@style/SanTextInputEditTextStyle"
+            android:paddingEnd="15dp"/>
+            -->
+
+    </LinearLayout>
+
+</layout>

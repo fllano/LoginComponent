@@ -1,0 +1,18 @@
+<resources>
+    <string name="login_documentNumber">User ID</string>
+    <string name="login_password">Password</string>
+    <string name="login_loginbutton">Start session</string>
+    <string name="login_forgot">forgot your password?</string>
+
+    <string name="login_invalid_text">"The credentials you entered are incorrect. Please try again."</string>
+    <string name="login_changeUser">Change user</string>
+    <string name="login_good_morning">Good morning</string>
+    <string name="login_good_afternoon">Good afternoon</string>
+    <string name="login_good_evening">Good evening</string>
+
+    <string name="login_error_user">User is too short, must be at least 4 characters</string>
+    <string name="login_error_pass">Password is too short, must be at least 6 characters</string>
+
+    <string name="login_invalid_title">"Incorrect credentials"</string>
+
+</resources>
